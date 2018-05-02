@@ -1,21 +1,21 @@
 <?php
+if(isset($_POST["submit"])){
 
-if(isset($_POST["submit1"])){
+	$email = isset($_POST['emailCo'])? $_POST['emailCo']:"";
+	$mdp = isset($_POST['mdpCo'])? $_POST['mdpCo']:"";
 
-$nom = isset($_POST['nom'])? $_POST['nom']:"";
-$prenom = isset($_POST['prenom'])? $_POST['prenom']:"";
-$email = isset($_POST['email'])? $_POST['email']:"";
-$mdp = isset($_POST['mdp'])? $_POST['mdp']:"";
-$naissance = isset($_POST['naissance'])? $_POST['naissance']:"";
-$sexe = isset($_POST['sexe'])? $_POST['sexe']:"";
+	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+	$reponse = "SELECT mail, mdp FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
+	$jack = $bdd->query($reponse);
+
+	$donnees = $jack->fetch();
+	if($donnees['mail']==$email && $donnees['mdp']==$mdp && $email!=NULL)
+	{
+		header('location:Profil1.html');
+
+	}
 
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
-$rqt = "INSERT INTO utilisateurs(nom,prenom,mail,naissance,mdp,sexe) VALUES ('$nom','$prenom','$email','$naissance','$mdp','$sexe')";
-
- $bdd->query($rqt);
-	/*$req = $bdd->prepare('INSERT INTO utilisateurs (id,nom,prenom,email,naissance,mdp,sexe,role) VALUES(?, ?,?,?,?,?,?,?)');
-$req->execute(array(NULL,$nom, $prenom,$email,NULL,$mdp,NULL,NULL));*/
 }
 
 ?>
@@ -40,34 +40,34 @@ $req->execute(array(NULL,$nom, $prenom,$email,NULL,$mdp,NULL,NULL));*/
 		<div class="wrapper">
 			<div class="content">
 				<div id="form_wrapper" class="form_wrapper">
-					<form class="register" method="post" action="register.php">
+					<form class="register">
 						<h3>S'inscrire</h3>
 						<div class="column">
 							<div>
 								<label>Nom</label>
-								<input type="text" name="nom"/>
+								<input type="text" />
 								<span class="error">Erreur</span>
 							</div>
 							<div>
 								<label>Prénom</label>
-								<input type="text" name="prenom"/>
+								<input type="text" />
 								<span class="error">Erreur</span>
 							</div>
 							<div>
 								<label>Adresse mail</label>
-								<input type="text" name="email"/>
+								<input type="text" />
 								<span class="error">Erreur</span>
 							</div>
 						</div>
 						<div class="column">
 							<div>
 								<label>Date de naissance</label>
-								<input type="date" name="naissance"/>
+								<input type="date" />
 								<span class="error">Erreur</span>
 							</div>
 							<div>
 								<label>Mot de passe</label>
-								<input type="password" name="mdp"/>
+								<input type="password" />
 								<span class="error">Erreur</span>
 							</div>
 							<div>
@@ -80,14 +80,13 @@ $req->execute(array(NULL,$nom, $prenom,$email,NULL,$mdp,NULL,NULL));*/
 							</div>
 						</div>
 						<div class="bottom">
-							
+							<input type="submit" value="S'inscrire"/>
 							<a href="index.html" rel="login" class="linkform">Vous avez déjà un compte ? Connectez-vous ici</a>
 							<div class="clear"></div>
 						</div>
-						<input type="submit" value="S'inscrire" name="submit1"/>
 					</form>
 
-					<form class="login active" method="post" action="register.php">
+					<form class="login active" method="post" action="index.php">
 						<h3>Connection</h3>
 						<div>
 							<label>Adresse mail</label>
@@ -100,7 +99,7 @@ $req->execute(array(NULL,$nom, $prenom,$email,NULL,$mdp,NULL,NULL));*/
 							<span class="error">Erreur</span>
 						</div>
 						<div class="bottom">
-							<input id="connect" type="submit" value="Se connecter" name="submit"></input>
+							<input type="submit" value="Se connecter" name="submit"></input>
 							<a href="shipping.html">Se connecter</a>
 							<a href="register.html" rel="register" class="linkform">Vous n'avez pas encore de compte ? Inscrivez-vous ici</a>
 							<div class="clear"></div>
@@ -175,7 +174,7 @@ $req->execute(array(NULL,$nom, $prenom,$email,NULL,$mdp,NULL,NULL));*/
 						height	: $currentForm.data('height') + 'px'
 					});
 				}
-
+								
 				$form_wrapper.find('input[id="connect"]').click(function(e)
 				{
 						alert("dd");
