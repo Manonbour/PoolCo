@@ -10,7 +10,7 @@ $naissance = isset($_POST['naissance'])? $_POST['naissance']:"";
 $sexe = isset($_POST['sexe'])? $_POST['sexe']:"";
 
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
 $rqt2 = "SELECT MAX(id) FROM utilisateurs";
 $jack = $bdd->query($rqt2);
 $donnees = $jack->fetch();
@@ -27,7 +27,7 @@ if(isset($_POST["submit"])){
 	$email = isset($_POST['emailCo'])? $_POST['emailCo']:"";
 	$mdp = isset($_POST['mdpCo'])? $_POST['mdpCo']:"";
 
-	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
 	$reponse = "SELECT mail, mdp FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
 	$jack = $bdd->query($reponse);
 
@@ -110,7 +110,7 @@ if(isset($_POST["submit"])){
 						<input type="submit" value="S'inscrire" name="submit1"/>
 					</form>
 
-					<form class="login active" method="post" action="Profil1.php">
+					<form class="login active" method="post" action="index.php">
 						<h3>Connection</h3>
 						<div>
 							<label>Adresse mail</label>
