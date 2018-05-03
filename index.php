@@ -1,4 +1,27 @@
 <?php
+
+if(isset($_POST["submit1"])){
+
+$nom = isset($_POST['nom'])? $_POST['nom']:"";
+$prenom = isset($_POST['prenom'])? $_POST['prenom']:"";
+$email = isset($_POST['email'])? $_POST['email']:"";
+$mdp = isset($_POST['mdp'])? $_POST['mdp']:"";
+$naissance = isset($_POST['naissance'])? $_POST['naissance']:"";
+$sexe = isset($_POST['sexe'])? $_POST['sexe']:"";
+
+
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+$rqt2 = "SELECT MAX(id) FROM utilisateurs";
+$jack = $bdd->query($rqt2);
+$donnees = $jack->fetch();
+$nb = $donnees[0]+1;
+$rqt = "INSERT INTO utilisateurs(id,nom,prenom,mail,naissance,mdp,sexe) VALUES ('$nb','$nom','$prenom','$email','$naissance','$mdp','$sexe')";
+if($email!=NULL)
+{
+ $bdd->query($rqt);
+}
+}
+
 if(isset($_POST["submit"])){
 
 	$email = isset($_POST['emailCo'])? $_POST['emailCo']:"";
@@ -11,7 +34,7 @@ if(isset($_POST["submit"])){
 	$donnees = $jack->fetch();
 	if($donnees['mail']==$email && $donnees['mdp']==$mdp && $email!=NULL)
 	{
-		header('location:Profil1.html');
+		header('location:Profil1.php');
 
 	}
 
@@ -40,34 +63,34 @@ if(isset($_POST["submit"])){
 		<div class="wrapper">
 			<div class="content">
 				<div id="form_wrapper" class="form_wrapper">
-					<form class="register">
+					<form class="register" method="post" action="index.php">
 						<h3>S'inscrire</h3>
 						<div class="column">
 							<div>
 								<label>Nom</label>
-								<input type="text" />
+								<input type="text" name="nom"/>
 								<span class="error">Erreur</span>
 							</div>
 							<div>
 								<label>Prénom</label>
-								<input type="text" />
+								<input type="text" name="prenom"/>
 								<span class="error">Erreur</span>
 							</div>
 							<div>
 								<label>Adresse mail</label>
-								<input type="text" />
+								<input type="text" name="email"/>
 								<span class="error">Erreur</span>
 							</div>
 						</div>
 						<div class="column">
 							<div>
 								<label>Date de naissance</label>
-								<input type="date" />
+								<input type="date" name="naissance"/>
 								<span class="error">Erreur</span>
 							</div>
 							<div>
 								<label>Mot de passe</label>
-								<input type="password" />
+								<input type="password" name="mdp"/>
 								<span class="error">Erreur</span>
 							</div>
 							<div>
@@ -80,13 +103,14 @@ if(isset($_POST["submit"])){
 							</div>
 						</div>
 						<div class="bottom">
-							<input type="submit" value="S'inscrire"/>
+							
 							<a href="index.html" rel="login" class="linkform">Vous avez déjà un compte ? Connectez-vous ici</a>
 							<div class="clear"></div>
 						</div>
+						<input type="submit" value="S'inscrire" name="submit1"/>
 					</form>
 
-					<form class="login active" method="post" action="index.php">
+					<form class="login active" method="post" action="Profil1.php">
 						<h3>Connection</h3>
 						<div>
 							<label>Adresse mail</label>
@@ -99,7 +123,7 @@ if(isset($_POST["submit"])){
 							<span class="error">Erreur</span>
 						</div>
 						<div class="bottom">
-							<input type="submit" value="Se connecter" name="submit"></input>
+							<input type="submit" value="Se connecter" name="submit" required></input>
 							<a href="shipping.html">Se connecter</a>
 							<a href="register.html" rel="register" class="linkform">Vous n'avez pas encore de compte ? Inscrivez-vous ici</a>
 							<div class="clear"></div>
