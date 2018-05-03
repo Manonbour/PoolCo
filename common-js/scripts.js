@@ -197,3 +197,144 @@ function isExists(elem){
 	}
 	return false;
 }
+
+
+/* Boite de dialogue modifs intro*/
+
+fermeBoite();
+function fermeBoite()
+{
+  document.getElementById("monPrompt").style.display = "none";
+  document.getElementById("idFond").style.display = "none";
+}
+
+function ouvreBoite()
+{
+  document.getElementById("monPrompt").style.display = "block";
+  document.getElementById("idFond").style.display = "block";
+}
+ 
+ 
+/**************************************************************************/
+/** Actions realisees par l utilisateur si clic sur Ok ou Annuler *********/
+function clicOk()
+{
+  fermeBoite();
+ 
+  /** Autres actions a realiser si clic sur Ok **/
+  /** ... **/
+}
+ 
+ 
+function clicAnnuler()
+{
+  fermeBoite();
+ 
+  /** Autres actions a realiser si clic sur annuler **/
+  /** ... **/
+}
+
+/* Boite de dialogue modifs à propos de moi*/
+fermeBoite2();
+function fermeBoite2()
+{
+  document.getElementById("monPrompt2").style.display = "none";
+  document.getElementById("idFond2").style.display = "none";
+}
+
+function ouvreBoite2()
+{
+  document.getElementById("monPrompt2").style.display = "block";
+  document.getElementById("idFond2").style.display = "block";
+}
+ 
+ 
+/**************************************************************************/
+/** Actions realisees par l utilisateur si clic sur Ok ou Annuler *********/
+function clicOk2()
+{
+  fermeBoite2();
+ 
+  /** Autres actions a realiser si clic sur Ok **/
+  /** ... **/
+}
+ 
+ 
+function clicAnnuler2()
+{
+  fermeBoite2();
+ 
+  /** Autres actions a realiser si clic sur annuler **/
+  /** ... **/
+}
+
+
+/* Boite de dialogue modifs experience pro*/
+
+fermeBoite3();
+function fermeBoite3()
+{
+  document.getElementById("monPrompt3").style.display = "none";
+  document.getElementById("idFond3").style.display = "none";
+}
+
+function ouvreBoite3()
+{
+  document.getElementById("monPrompt3").style.display = "block";
+  document.getElementById("idFond3").style.display = "block";
+}
+ 
+ 
+/**************************************************************************/
+/** Actions realisees par l utilisateur si clic sur Ok ou Annuler *********/
+function clicOk3()
+{
+  fermeBoite3();
+ 
+  /** Autres actions a realiser si clic sur Ok **/
+  /** ... **/
+}
+ 
+ 
+function clicAnnuler3()
+{
+  fermeBoite3();
+ 
+  /** Autres actions a realiser si clic sur annuler **/
+  /** ... **/
+}
+
+/* Boite de dialogue modifs education*/
+
+fermeBoite4();
+function fermeBoite4()
+{
+  document.getElementById("monPrompt4").style.display = "none";
+  document.getElementById("idFond4").style.display = "none";
+}
+
+function ouvreBoite4()
+{
+  document.getElementById("monPrompt4").style.display = "block";
+  document.getElementById("idFond4").style.display = "block";
+}
+ 
+ 
+/**************************************************************************/
+/** Actions realisees par l utilisateur si clic sur Ok ou Annuler *********/
+function clicOk4()
+{
+  fermeBoite4();
+ 
+  /** Autres actions a realiser si clic sur Ok **/
+  /** ... **/
+}
+ 
+ 
+function clicAnnuler4()
+{
+  fermeBoite4();
+ 
+  /** Autres actions a realiser si clic sur annuler **/
+  /** ... **/
+}

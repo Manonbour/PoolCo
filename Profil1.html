@@ -8,63 +8,7 @@
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-	<style>
 
-	.titrePrompt{
- background-color: #FF007F;
- color: #000000;
- font-weight: bold;
- font-size: 15pt;
- font-family: Poppins;
- text-align: center;
-}
-
-  .photo{
-    padding-top: 5px;
-  }
- 
-.contenuPrompt{
- background-color: #DDDDDD;
- color: #000000;
- font-size: 11pt;
- font-family: "Poppins";
- margin: 0px;
- padding: 20px;
-}
- 
-.boutonsPrompt{
- text-align: center;
-}
- 
-.ok, .annuler{
- width: 80px;
-}
- 
-.ok{
- margin-right: 10px;
- margin-left: 0px;
- margin-top: 0px;
- margin-bottom: 0px;
-}
- 
-.annuler{
- margin-right: 0px;
- margin-left: 10px;
- margin-top: 0px;
- margin-bottom: 0px;
-}
-	.navbar{
-		margin-bottom:0;
-		border-radius:0;
-	}
-
-   footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    </style>
 
 	
 	<!-- Font -->
@@ -138,7 +82,7 @@
 <div id="monPrompt" class="conteneurPrompt">
  
   <div class="titrePrompt">
-       Modification des infomations
+       Modification des informations
   </div>
  
   <div class="contenuPrompt">
@@ -257,8 +201,8 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="heading">
-            <h3><b>About me</b></h3>
-            <h6 class="font-lite-black"><b>PROFESSIONAL PATH</b></h6>
+            <h3><b>A propos de moi</b></h3>
+            <h6 class="font-lite-black"><b>DESCRIPTION</b></h6>
           </div>
         </div><!-- col-sm-4 -->
         <div class="col-sm-8">
@@ -271,8 +215,42 @@
           adipiscing elit. Nulla maximus pellentes que velit, quis consequat nulla 
           effi citur at.Maecenas sed massa tristique.</p>
           
-          <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite()">Modifier les infos</button>
-          
+          <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite2()">Modifier les infos</button>
+         
+         <!-- Debut - Boite de dialogue -->
+     <!-- Fond de la boite de dialogue -->
+<div id="idFond2" class="fond2">
+&nbsp;
+</div>
+ 
+      <!-- Boite de dialogue -->
+<div id="monPrompt2" class="conteneurPrompt2">
+ 
+  <div class="titrePrompt2">
+       Modification de ma description
+  </div>
+ 
+  <div class="contenuPrompt2">
+    <!-- debut - elements de la boite de dialogue -->
+
+
+    Description&nbsp;:
+    <textarea name="Description" rows=6 cols=40>Valeur par défaut</textarea><br />
+
+    <!-- fin - elements de la boite de dialogue -->
+ 
+    <div class="boutonsPrompt2">
+      <br />
+      <input type="button" value="Ok" id="idOk2" class="ok2" onclick="clicOk2()" />
+      <input type="button" value="Annuler" id="idAnnuler2" class="annuler2" onclick="clicAnnuler2()" />
+    </div>
+ 
+  </div>
+ 
+</div>
+<!-- Fin - Boite de dialogue -->
+
+
         </div><!-- col-sm-8 -->
       </div><!-- row -->
     </div><!-- container -->
@@ -283,8 +261,8 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="heading">
-            <h3><b>Work Experience</b></h3>
-            <h6 class="font-lite-black"><b>PREVIOUS JOBS</b></h6>
+            <h3><b>Experience Professionnelle</b></h3>
+            <h6 class="font-lite-black"><b>EMPLOIS PRECEDENTS</b></h6>
           </div>
         </div><!-- col-sm-4 -->
         <div class="col-sm-8">
@@ -318,7 +296,50 @@
               <li>Sed finibus aliquam neque sit.</li>
             </ul>
           </div><!-- experience -->
-          <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite()">Modifier les infos</button>
+          <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite3()">Modifier les infos</button>
+
+          <!-- Debut - Boite de dialogue -->
+     <!-- Fond de la boite de dialogue -->
+<div id="idFond3" class="fond3">
+&nbsp;
+</div>
+ 
+      <!-- Boite de dialogue -->
+<div id="monPrompt3" class="conteneurPrompt3">
+ 
+  <div class="titrePrompt3">
+       Modification de l'experience professionnelle
+  </div>
+ 
+  <div class="contenuPrompt3">
+    <!-- debut - elements de la boite de dialogue -->
+
+
+
+    Nom du poste&nbsp;:
+    <input type="text" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Entreprise&nbsp;:
+    <input type="text" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Date de début&nbsp;:
+    <input type="Date" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Date de fin&nbsp;:
+    <input type="Date" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Description&nbsp;:
+    <textarea name="Description" rows=4 cols=40>Valeur par défaut</textarea><br />
+
+    <!-- fin - elements de la boite de dialogue -->
+ 
+    <div class="boutonsPrompt3">
+      <br />
+      <input type="button" value="Ok" id="idOk3" class="ok3" onclick="clicOk3()" />
+      <input type="button" value="Annuler" id="idAnnuler3" class="annuler3" onclick="clicAnnuler3()" />
+    </div>
+ 
+  </div>
+ 
+</div>
+<!-- Fin - Boite de dialogue -->
+
         </div><!-- col-sm-8 -->
       </div><!-- row -->
     </div><!-- container -->
@@ -367,7 +388,47 @@
             </div><!-- education -->
           </div><!-- education-wrapper -->
 
-          <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite()">Modifier les infos</button>
+          <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite4()">Modifier les infos</button>
+
+          <!-- Debut - Boite de dialogue -->
+     <!-- Fond de la boite de dialogue -->
+<div id="idFond4" class="fond4">
+&nbsp;
+</div>
+ 
+      <!-- Boite de dialogue -->
+<div id="monPrompt4" class="conteneurPrompt4">
+ 
+  <div class="titrePrompt4">
+       Modification du parcours scolaire
+  </div>
+ 
+  <div class="contenuPrompt4">
+    <!-- debut - elements de la boite de dialogue -->
+
+
+
+    Diplome&nbsp;:
+    <input type="text" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Université&nbsp;:
+    <input type="text" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Date de validation&nbsp;:
+    <input type="Date" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Description&nbsp;:
+    <textarea name="Description" rows=6 cols=40>Valeur par défaut</textarea><br />
+
+    <!-- fin - elements de la boite de dialogue -->
+ 
+    <div class="boutonsPrompt4">
+      <br />
+      <input type="button" value="Ok" id="idOk4" class="ok4" onclick="clicOk4()" />
+      <input type="button" value="Annuler" id="idAnnuler4" class="annuler4" onclick="clicAnnuler4()" />
+    </div>
+ 
+  </div>
+ 
+</div>
+<!-- Fin - Boite de dialogue -->
         </div><!-- col-sm-8 -->
       </div><!-- row -->
     </div><!-- container -->
@@ -398,43 +459,7 @@
   
   <script src="common-js/scripts.js"></script>
 
-     <script>
 
-  clicAnnuler();
-
-
- function fermeBoite()
-{
-  document.getElementById("monPrompt").style.display = "none";
-  document.getElementById("idFond").style.display = "none";
-}
-
-function ouvreBoite()
-{
-  document.getElementById("monPrompt").style.display = "block";
-  document.getElementById("idFond").style.display = "block";
-}
- 
- 
-/**************************************************************************/
-/** Actions realisees par l utilisateur si clic sur Ok ou Annuler *********/
-function clicOk()
-{
-  fermeBoite();
- 
-  /** Autres actions a realiser si clic sur Ok **/
-  /** ... **/
-}
- 
- 
-function clicAnnuler()
-{
-  fermeBoite();
- 
-  /** Autres actions a realiser si clic sur annuler **/
-  /** ... **/
-}
-  </script>
   
 </body>
 </html>
