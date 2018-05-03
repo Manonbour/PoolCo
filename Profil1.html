@@ -10,6 +10,46 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	<style>
+
+	.titrePrompt{
+ background-color: #FF007F;
+ color: #000000;
+ font-weight: bold;
+ font-size: 15pt;
+ font-family: Poppins;
+ text-align: center;
+}
+ 
+.contenuPrompt{
+ background-color: #DDDDDD;
+ color: #000000;
+ font-size: 11pt;
+ font-family: "Poppins";
+ margin: 0px;
+ padding: 20px;
+}
+ 
+.boutonsPrompt{
+ text-align: center;
+}
+ 
+.ok, .annuler{
+ width: 80px;
+}
+ 
+.ok{
+ margin-right: 10px;
+ margin-left: 0px;
+ margin-top: 0px;
+ margin-bottom: 0px;
+}
+ 
+.annuler{
+ margin-right: 0px;
+ margin-left: 10px;
+ margin-top: 0px;
+ margin-bottom: 0px;
+}
 	.navbar{
 		margin-bottom:0;
 		border-radius:0;
@@ -20,7 +60,45 @@
       color: white;
       padding: 15px;
     }
-	</style>
+    </style>
+
+    <script>
+
+
+ function fermeBoite()
+{
+  document.getElementById("monPrompt").style.display = "none";
+  document.getElementById("idFond").style.display = "none";
+}
+
+function ouvreBoite()
+{
+  document.getElementById("monPrompt").style.display = "block";
+  document.getElementById("idFond").style.display = "block";
+}
+ 
+ 
+/**************************************************************************/
+/** Actions realisees par l utilisateur si clic sur Ok ou Annuler *********/
+function clicOk()
+{
+  fermeBoite();
+ 
+  /** Autres actions a realiser si clic sur Ok **/
+  /** ... **/
+}
+ 
+ 
+function clicAnnuler()
+{
+  fermeBoite();
+ 
+  /** Autres actions a realiser si clic sur annuler **/
+  /** ... **/
+}
+	</script>
+
+	
 	<!-- Font -->
 	
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
@@ -36,6 +114,7 @@
 	<link href="css/styles.css" rel="stylesheet">
 	
 	<link href="css/responsive.css" rel="stylesheet">
+
 	
 </head>
 <body>
@@ -77,13 +156,53 @@
             <ul class="information margin-tb-30">
               <li><b>BORN : </b>August 25, 1987</li>
               <li><b>EMAIL : </b>mymith@mywebpage.com</li>
-            <button type="button" class="btn btn-info btn-lg" href="#">Télécharger le CV</button> 
-            
+
+  <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite()">Modifier les infos</button>
+<!-- Debut - Boite de dialogue -->
+     <!-- Fond de la boite de dialogue -->
+<div id="idFond" class="fond">
+&nbsp;
+</div>
+ 
+      <!-- Boite de dialogue -->
+<div id="monPrompt" class="conteneurPrompt">
+ 
+  <div class="titrePrompt">
+       Modification des infomations
+  </div>
+ 
+  <div class="contenuPrompt">
+    <!-- debut - elements de la boite de dialogue -->
+
+
+
+    Nom&nbsp;:
+    <input type="text" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Prenom&nbsp;:
+    <input type="text" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Date de Naissance&nbsp;:
+    <input type="" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+    Email&nbsp;:
+    <input type="Email" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+
+    <!-- fin - elements de la boite de dialogue -->
+ 
+    <div class="boutonsPrompt">
+      <br />
+      <input type="button" value="Ok" id="idOk" class="ok" onclick="clicOk()" />
+      <input type="button" value="Annuler" id="idAnnuler" class="annuler" onclick="clicAnnuler()" />
+    </div>
+ 
+  </div>
+ 
+</div>
+<!-- Fin - Boite de dialogue -->
+         
     </div><!-- container -->
               
             </ul>
             
-              
+             
   
           </div><!-- intro -->
         </div><!-- col-sm-8 -->
@@ -182,6 +301,7 @@
           adipiscing elit. Nulla maximus pellentes que velit, quis consequat nulla 
           effi citur at.Maecenas sed massa tristique.</p>
           
+          <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite()">Modifier les infos</button>
           
         </div><!-- col-sm-8 -->
       </div><!-- row -->
@@ -228,7 +348,7 @@
               <li>Sed finibus aliquam neque sit.</li>
             </ul>
           </div><!-- experience -->
-          
+          <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite()">Modifier les infos</button>
         </div><!-- col-sm-8 -->
       </div><!-- row -->
     </div><!-- container -->
@@ -276,6 +396,8 @@
               eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
             </div><!-- education -->
           </div><!-- education-wrapper -->
+
+          <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite()">Modifier les infos</button>
         </div><!-- col-sm-8 -->
       </div><!-- row -->
     </div><!-- container -->
