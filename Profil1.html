@@ -19,6 +19,10 @@
  font-family: Poppins;
  text-align: center;
 }
+
+  .photo{
+    padding-top: 5px;
+  }
  
 .contenuPrompt{
  background-color: #DDDDDD;
@@ -62,42 +66,6 @@
     }
     </style>
 
-    <script>
-
-
- function fermeBoite()
-{
-  document.getElementById("monPrompt").style.display = "none";
-  document.getElementById("idFond").style.display = "none";
-}
-
-function ouvreBoite()
-{
-  document.getElementById("monPrompt").style.display = "block";
-  document.getElementById("idFond").style.display = "block";
-}
- 
- 
-/**************************************************************************/
-/** Actions realisees par l utilisateur si clic sur Ok ou Annuler *********/
-function clicOk()
-{
-  fermeBoite();
- 
-  /** Autres actions a realiser si clic sur Ok **/
-  /** ... **/
-}
- 
- 
-function clicAnnuler()
-{
-  fermeBoite();
- 
-  /** Autres actions a realiser si clic sur annuler **/
-  /** ... **/
-}
-	</script>
-
 	
 	<!-- Font -->
 	
@@ -128,17 +96,19 @@ function clicAnnuler()
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <img class="photo" src="images/logo.png" size="100%" height="45" > 
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="./Accueil.html">Accueil</a></li>
+        <li><a href="./Reseau.html">Mon réseau</a></li>
+        <li class="active" ><a href="#">Mon profil</a></li>
+        <li><a href="#">Notifications</a></li>
+        <li><a href="#">Messagerie</a></li>
+        <li><a href="#">Emploi</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
       </ul>
     </div>
   </div>
@@ -157,7 +127,7 @@ function clicAnnuler()
               <li><b>BORN : </b>August 25, 1987</li>
               <li><b>EMAIL : </b>mymith@mywebpage.com</li>
 
-  <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite()">Modifier les infos</button>
+  <br><button type="button" class="btn btn-warning btn-lg" href="#" onclick="ouvreBoite()"">Modifier les infos</button>
 <!-- Debut - Boite de dialogue -->
      <!-- Fond de la boite de dialogue -->
 <div id="idFond" class="fond">
@@ -427,6 +397,44 @@ function clicAnnuler()
   <script src="common-js/jquery.fluidbox.min.js"></script>
   
   <script src="common-js/scripts.js"></script>
+
+     <script>
+
+  clicAnnuler();
+
+
+ function fermeBoite()
+{
+  document.getElementById("monPrompt").style.display = "none";
+  document.getElementById("idFond").style.display = "none";
+}
+
+function ouvreBoite()
+{
+  document.getElementById("monPrompt").style.display = "block";
+  document.getElementById("idFond").style.display = "block";
+}
+ 
+ 
+/**************************************************************************/
+/** Actions realisees par l utilisateur si clic sur Ok ou Annuler *********/
+function clicOk()
+{
+  fermeBoite();
+ 
+  /** Autres actions a realiser si clic sur Ok **/
+  /** ... **/
+}
+ 
+ 
+function clicAnnuler()
+{
+  fermeBoite();
+ 
+  /** Autres actions a realiser si clic sur annuler **/
+  /** ... **/
+}
+  </script>
   
 </body>
 </html>

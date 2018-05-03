@@ -62,7 +62,7 @@ a b.light-color:hover{ text-decoration: none; color: #FFA804; }
 
 b{ font-weight: 600; }
 
-img{ width: 100%; }
+img{ size: 100%; }
 
 li{ list-style: none; display: inline-block; }
 
@@ -115,7 +115,7 @@ b.max-bold{ font-weight: 700; }
 --------------------------------- */
 
 .intro-section{ padding-top: 200px; position: relative; background-size: cover; 
-	z-index: 1;background-image: url(slider-1-1920x1080.jpg); }
+	z-index: 1;background-image: url(fond_profil.jpg); }
 
 .intro-section:before{ content:''; z-index: -1; position: absolute; top: 0; bottom: 0; left: 0; 
 	right: 0; background: rgba(0,0,0, .2); }
