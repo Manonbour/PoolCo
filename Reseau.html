@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Accueil</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0px;      
+      border-radius: 0;
+      font-size:16px;
+      font-family: 'Poppins', serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased; 
+      -moz-osx-font-smoothing: grayscale; 
+      word-wrap: break-word; 
+    }
+
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+      height: 700px;
+      padding-left: 80px;
+    }
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    .photo
+    {
+      padding-top: 5px;
+    }
+
+    .photopro
+    {
+      overflow:hidden;
+      -webkit-border-radius:50px;
+      -moz-border-radius:50px;
+      border-radius:50px;
+      width:90px;
+      height:90px;
+      margin-right: 20px;
+      margin-left: 100px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 10px;
+    }
+
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <img class="photo" src="images/logo.png" size="100%" height="45" >      
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="./Accueil.html" title="">Accueil</a></li>
+        <li><a href="#">Mon réseau</a></li>
+        <li><a href="./Profil1.html" title="">Mon profil</a></li>
+        <li><a href="#">Notifications</a></li>
+        <li><a href="#">Messagerie</a></li>
+        <li><a href="#">Emploi</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="w3-display-container w3-content w3-wide" id="home">
+  <img src="images/fond_reseau.jpg" width="1280" height="500">
+</header>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-8 text-left">
+      <hr>
+      <h2>Vos relations :</h2>
+      <hr>
+        <img class="photopro" src="images/img.png" alt="Avatar">
+        <span style="width:60px">Roxane Batigny</span> 
+        <img class="photopro" src="images/img.png" alt="Avatar">
+        <span style="width:60px">Nicolas Puech</span>
+        <img class="photopro" src="images/img.png" alt="Avatar">
+        <span style="width:60px">Manon Bourgoing</span>
+      <hr>
+      </div>
+
+      <div class="col-sm-8 text-left">
+      <h2>Vous connaissez peut-être :</h2>
+      <hr>
+        <img class="photopro" src="images/img.png" alt="Avatar">
+        <span style="width:60px">Roxane Batigny</span> 
+        <img class="photopro" src="images/img.png" alt="Avatar">
+        <span style="width:60px">Nicolas Puech</span>
+        <img class="photopro" src="images/img.png" alt="Avatar">
+        <span style="width:60px">Manon Bourgoing</span>
+      </div>    
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>@PoolCorporation</p>
+</footer>
+
+</body>
+</html>
