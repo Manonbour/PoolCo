@@ -292,8 +292,50 @@ b.max-bold{ font-weight: 700; }
 .experience .list > li:before{ content: ''; position: absolute; top: 50%; left: 0; height: 10px; 
 	width: 10px; margin-top: -5px; display: block; border-radius: 10px; border: 2px solid #fff; }
 
+/*Design boite de dialogue 1*/
+	.titrePrompt3bis{
+		background-color: #000000;
+		color:#FF007F ;
+		font-weight: bold;
+		font-size: 15pt;
+		font-family: Poppins;
+		text-align: center;
+	   }
+		
+	   .contenuPrompt3bis{
+		background-color: #DDDDDD;
+		color: #000000;
+		font-size: 11pt;
+		font-family: "Poppins";
+		margin: 0px;
+		padding: 20px;
+	   }
+		
+	   .boutonsPrompt3bis{
+		text-align: center;
+	   }
+		
+	   .ok3bis, .annuler3bis{
+		width: 80px;
+	   }
+		
+	   .ok3bis{
+		margin-right: 10px;
+		margin-left: 0px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	   }
+		
+	   .annuler3bis{
+		margin-right: 0px;
+		margin-left: 10px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	   }
 
-.titrePrompt3{
+	/*Design boite de dialogue 2*/   
+
+	.titrePrompt3{
  background-color: #000000;
  color:#FF007F ;
  font-weight: bold;
@@ -349,6 +391,89 @@ b.max-bold{ font-weight: 700; }
 	box-shadow: 0 0 0 8px rgba(255,171,0, .4); background: #FFAB00; }
 
 
+/*Design boite de dialogue 1*/
+.titrePrompt42{
+	background-color: #FF007F;
+	color: #000000;
+	font-weight: bold;
+	font-size: 15pt;
+	font-family: Poppins;
+	text-align: center;
+   }
+	
+   .contenuPrompt42{
+	background-color: #DDDDDD;
+	color: #000000;
+	font-size: 11pt;
+	font-family: "Poppins";
+	margin: 0px;
+	padding: 20px;
+   }
+	
+   .boutonsPrompt42{
+	text-align: center;
+   }
+	
+   .ok42, .annuler42{
+	width: 80px;
+   }
+	
+   .ok42{
+	margin-right: 10px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+   }
+	
+   .annuler42{
+	margin-right: 0px;
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+   }	
+
+	/*Design boite de dialogue 2*/
+.titrePrompt41{
+	background-color: #FF007F;
+	color: #000000;
+	font-weight: bold;
+	font-size: 15pt;
+	font-family: Poppins;
+	text-align: center;
+   }
+	
+   .contenuPrompt41{
+	background-color: #DDDDDD;
+	color: #000000;
+	font-size: 11pt;
+	font-family: "Poppins";
+	margin: 0px;
+	padding: 20px;
+   }
+	
+   .boutonsPrompt41{
+	text-align: center;
+   }
+	
+   .ok41, .annuler41{
+	width: 80px;
+   }
+	
+   .ok41{
+	margin-right: 10px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+   }
+	
+   .annuler41{
+	margin-right: 0px;
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+   }	
+
+	/*Design boite de dialogue 3*/
 .titrePrompt4{
  background-color: #FF007F;
  color: #000000;
