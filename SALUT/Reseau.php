@@ -5,14 +5,14 @@
 { 
     $t=$_SESSION["abc"];
     $noom = $_GET['noom'];
-    $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
     $rqt = "UPDATE ami SET estAmi=1 WHERE Id_Utili='$t' AND Nom='$noom' AND estAmi=0";
     $rep = $bdd->query($rqt);
 }
 
 
  $t=$_SESSION["abc"];
- $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+ $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
  $reponse0 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id AND utilisateurs.id=$t AND Ami.estAmi=0";
  $reponse1 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi  FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id AND utilisateurs.id=$t AND Ami.estAmi=1";
  $jack0 = $bdd->query($reponse0);
@@ -126,7 +126,7 @@
         <li><a href="#">Notifications</a></li>
         <li><a href="#">Messagerie</a></li>
         <li><a href="./Emploi.php">Emploi</a></li>
-        <li><a href="./Administrateur.php"> <?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
+        <li><a href="./Administrateur.php"><?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>

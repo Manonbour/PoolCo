@@ -13,7 +13,7 @@ $email1 = isset($_POST['mail'])? $_POST['mail']:"";
 $id1 = $_SESSION["id1"];
 
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
 $rqt2 = "SELECT MAX(id) FROM utilisateurs";
 $rqt4 = "SELECT MAX(id) FROM Ami";
 $jack = $bdd->query($rqt2);
@@ -21,33 +21,20 @@ $jack4 = $bdd->query($rqt4);
 $donnees = $jack->fetch();
 $donnees1 = $jack4->fetch();
 $nb = $donnees[0]+1;
-$_SESSION["id"] = $nb;
 $nb1 = $donnees1[0]+1;
-$_SESSION["id1"] = $nb1;
 $rqt = "INSERT INTO utilisateurs(id, nom, prenom, mail,Photo) VALUES ('$nb', '$nom','$prenom','$email','images/pardef.png')";
 $bdd->query($rqt);
 $rqt1 = "INSERT INTO Ami(id, Nom, Prénom, Mail,Photo) VALUES ('$nb1', '$nom1','$prenom1','$email1','images/pardef.png')";
 $bdd->query($rqt1);
-$_SESSION["nom3"]=$_POST['nom'];
-$_SESSION["prenom3"]=$_POST['prenom'];
-$_SESSION["mail3"]=$_POST['mail'];
 
-
-
-$_SESSION["nom4"]=$_POST['nom'];
-$_SESSION["prenom4"]=$_POST['prenom'];
-$_SESSION["mail4"]=$_POST['mail'];
 
 
 
 }
 
-
- if(isset($_GET['noom'])){
-
-  
-
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+ if(isset($_GET['noom']))
+ {
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
 
 //$id5 = $donnees5['id'];
 $blaze = $_GET['noom'];
@@ -75,14 +62,14 @@ $_SESSION["id6"] = $donnees6['id'];*/
 { 
   $t=$_SESSION["abc"];
   $noom = $_GET['noom'];
-    $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
     $rqt = "UPDATE Ami SET estAmi=1 WHERE Id_Utili='$t' AND Nom='$noom' AND estAmi=0";
     $rep = $bdd->query($rqt);
 }
 
 
  $t=$_SESSION["abc"];
- $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+ $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
  $reponse0 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id AND Ami.estAmi=0";
  $reponse1 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi  FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id  AND Ami.estAmi=1";
  $reponse3 = "SELECT * FROM `utilisateurs`";

@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_POST["AjPho"]))
 {
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
   echo $filename = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_FILENAME);
   echo $type = pathinfo($_FILES['fileToUpload']['type'], PATHINFO_FILENAME);
   if($type=='jpeg'){$type='jpg';}
@@ -14,7 +14,7 @@ if(isset($_POST["AjPho"]))
 }$ch=0;
 
 $id = $_SESSION["id"];
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
 $requ = "SELECT URL FROM Album WHERE id_utilisateur=$id";
 $bidule=$bdd->query($requ);
 
@@ -32,8 +32,8 @@ echo $type = pathinfo($_FILES['fileToUpload']['type'], PATHINFO_FILENAME);
 if($type=='jpeg'){$type='jpg';}
 echo $chemin = "images/".$filename.".".$type;
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
-$rqt = "UPDATE utilisateurs SET nom='$nom', prenom='$prenom', mail='$email', naissance='$naissance', Photo='$chemin', Statut='$Statut', WHERE id='$id'";
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$rqt = "UPDATE utilisateurs SET nom='$nom', prenom='$prenom', mail='$email', naissance='$naissance', Photo='$chemin', Statut='$Statut', role='$role' WHERE id='$id'";
 $bdd->query($rqt);
 
 $_SESSION["nom"]=$_POST['nom'];
@@ -42,13 +42,14 @@ $_SESSION["mail"]=$_POST['mail'];
 $_SESSION["naissance"]=$_POST['naissance'];
 $_SESSION["statut"]=$_POST['Statut'];
 $_SESSION["Photo"]=$chemin;
+$_SESSION["role"]=$_POST['droits'];
 }
 
 if(isset($_POST["Ok2"]))
 {
   $apropos = isset($_POST['apropos'])? $_POST['apropos']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
   $rqt = "UPDATE profession SET apropos='$apropos' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["apropos"]=$_POST['apropos'];
@@ -62,7 +63,7 @@ if(isset($_POST["Ok4"]))
   $date_val3 = isset($_POST['date_val3'])? $_POST['date_val3']:"";
   $descri3 = isset($_POST['descri3'])? $_POST['descri3']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
   $rqt = "UPDATE profession SET diplome3='$diplome3', universite3='$universite3', date_val3='$date_val3', descri3='$descri3' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["diplome3"] = $_POST['diplome3'];
@@ -78,7 +79,7 @@ if(isset($_POST["Ok5"]))
   $date_val3 = isset($_POST['date_val2'])? $_POST['date_val2']:"";
   $descri3 = isset($_POST['descri2'])? $_POST['descri2']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
   $rqt = "UPDATE profession SET diplome2='$diplome3', universite2='$universite3', date_val2='$date_val3', descri2='$descri3' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["diplome2"] = $_POST['diplome2'];
@@ -95,7 +96,7 @@ if(isset($_POST["Ok6"]))
   $date_val3 = isset($_POST['date_val1'])? $_POST['date_val1']:"";
   $descri3 = isset($_POST['descri1'])? $_POST['descri1']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
   $rqt = "UPDATE profession SET diplome1='$diplome3', universite1='$universite3', date_val1='$date_val3', descri1='$descri3' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["diplome1"] = $_POST['diplome1'];
@@ -112,7 +113,7 @@ if(isset($_POST["Ok3"]))
   $date_fin2 = isset($_POST['date_fin2'])? $_POST['date_fin2']:"";
   $desc2 = isset($_POST['desc2'])? $_POST['desc2']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
   $rqt = "UPDATE profession SET nom_poste2='$nom_poste2', entreprise2='$entreprise2', date_debut2='$date_debut2', date_fin2='$date_fin2', desc2='$desc2' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["nom_poste2"] = $_POST['nom_poste2'];
@@ -131,7 +132,7 @@ if(isset($_POST["Ok3"]))
   $date_fin2 = isset($_POST['date_fin1'])? $_POST['date_fin1']:"";
   $desc2 = isset($_POST['desc1'])? $_POST['desc1']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
   $rqt = "UPDATE profession SET nom_poste1='$nom_poste2', entreprise1='$entreprise2', date_debut1='$date_debut2', date_fin1='$date_fin2', desc1='$desc2' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["nom_poste1"] = $_POST['nom_poste1'];
@@ -214,7 +215,7 @@ if(isset($_POST["Ok3"]))
         <li><a href="#">Notifications</a></li>
         <li><a href="#">Messagerie</a></li>
         <li><a href="./Emploi.php">Emploi</a></li>
-        <li><a href="./Administrateur.php"> <?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
+        <li><a href="./Administrateur.php"><?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
@@ -279,7 +280,7 @@ if(isset($_POST["Ok3"]))
         <div class="col-sm-4">
           <div class="heading">
             <h3><b>Portfolio</b></h3>
-            <form method="post" action="Profil12.php" enctype="multipart/form-data">
+            <form method="post" action="Profil1.php" enctype="multipart/form-data">
             <br><input id="fileToUpload" name="fileToUpload" type="file" multiple class="file-loading">
             <br><input type="submit" class="btn btn-warning btn-lg" name="AjPho" value="Ajouter une photo" id="Ajpho"></form>
           </div>

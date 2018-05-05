@@ -7,14 +7,14 @@ $TitreOffre = isset($_POST['TitreOffre'])? $_POST['TitreOffre']:"";
 $AuteurOffre = isset($_POST['AuteurOffre'])? $_POST['AuteurOffre']:"";
 $DescOffre = isset($_POST['DescOffre'])? $_POST['DescOffre']:"";
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
 
 $rqt = "INSERT INTO `offre` (`Num_offre`, `Titre`, `Description`, `Nom_Auteur`) VALUES (NULL, '$TitreOffre', '$DescOffre', '$AuteurOffre');";
 
 $bdd->query($rqt);
 }
 
- $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+ $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
  $requ = "SELECT * FROM offre";
  $jack0 = $bdd->query($requ);
 ?>
@@ -127,7 +127,7 @@ $bdd->query($rqt);
         <li><a href="#">Notifications</a></li>
         <li><a href="#">Messagerie</a></li>
         <li class="active"><a href="./Emploi.php">Emploi</a></li>
-        <li><a href="./Administrateur.php"> <?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
+        <li><a href="./Administrateur.php"><?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>

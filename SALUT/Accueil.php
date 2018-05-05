@@ -4,7 +4,7 @@ session_start();
 $date = date("Y-m-d");
 $heure = date("H:i:s");
 $id=$_SESSION["abc"];
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
 
 if(isset($_GET['idpubli']))
 {
@@ -17,10 +17,10 @@ if(isset($_GET['idpubli']))
 if(isset($_POST["Env"]))
 {
   $publitext = isset($_POST['TEX'])? $_POST['TEX']:"";
-  echo $filename = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_FILENAME);
-  echo $type = pathinfo($_FILES['fileToUpload']['type'], PATHINFO_FILENAME);
+  $filename = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_FILENAME);
+  $type = pathinfo($_FILES['fileToUpload']['type'], PATHINFO_FILENAME);
   if($type=='jpeg'){$type='jpg';}
-  echo $chemin = "images/".$filename.".".$type;
+  $chemin = "images/".$filename.".".$type;
   $rqt = "INSERT INTO `Publication` (`Texte`, `Date`,`Heure`, `Id_Un`, `URL`) VALUES ('$publitext', '$date','$heure','$id', '$chemin')";
   $bdd->query($rqt);
   $_SESSION["txt"]=$_POST['TEX'];
@@ -34,7 +34,7 @@ $DateEvent= isset($_POST['DateEvent'])? $_POST['DateEvent']:"";
 $HeureEvent= isset($_POST['HeureEvent'])? $_POST['HeureEvent']:"";
 $DescEvent= isset($_POST['DescEvent'])? $_POST['DescEvent']:"";
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
 
 $rqt = "INSERT INTO `Event` (`id_event`, `Titre`, `Lieu`, `Date`, `Heure`,`Description`,`id_posteur`) VALUES (NULL, '$TitreEvent', '$LieuEvent', '$DateEvent', '$HeureEvent','$DescEvent', '$id');";
 
@@ -84,7 +84,7 @@ $jackevent=$bdd->query($requevent);
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      height: 4500px;
+      height: 2700px;
     }
     
     .photo
@@ -206,7 +206,7 @@ $jackevent=$bdd->query($requevent);
         <li><a href="#">Notifications</a></li>
         <li><a href="#">Messagerie</a></li>
         <li><a href="./Emploi.php">Emploi</a></li>
-        <li><a href="./Administrateur.php"> <?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
+        <li><a href="./Administrateur.php"><?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>

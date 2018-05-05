@@ -10,19 +10,26 @@ $email = isset($_POST['email'])? $_POST['email']:"";
 $mdp = isset($_POST['mdp'])? $_POST['mdp']:"";
 $naissance = isset($_POST['naissance'])? $_POST['naissance']:"";
 $sexe = isset($_POST['sexe'])? $_POST['sexe']:"";
+$role = isset($_POST['droits'])? $_POST['droits']:"";
 
-
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
 $rqt2 = "SELECT MAX(id) FROM utilisateurs";
 $jack = $bdd->query($rqt2);
 $donnees = $jack->fetch();
 $nb = $donnees[0]+1;
 $_SESSION["id"] = $nb;
-$rqt = "INSERT INTO utilisateurs(id,nom,prenom,mail,naissance,mdp,sexe) VALUES ('$nb','$nom','$prenom','$email','$naissance','$mdp','$sexe')";
+$rqt = "INSERT INTO utilisateurs(id,nom,prenom,mail,naissance,mdp,sexe, Photo, role, Statut) VALUES ('$nb','$nom','$prenom','$email','$naissance','$mdp','$sexe','images/pardef.png', '$role', 'Étudiant')";
+$rqt42 = "INSERT INTO Ami(Id,Id_Utili, Nom,Prénom,Mail,Naissance,Photo,estAmi) VALUES (NULL, '$nb','Rouaix','Aliénor','alienor.rouaix@edu.ece.fr','1997/12/17','images/Ali_pro.png', '0')";
+$rqt43 = "INSERT INTO Ami(Id,Id_Utili, Nom,Prénom,Mail,Naissance,Photo,estAmi) VALUES (NULL, '$nb','Bazin','Diego','diego.bazin@edu.ece.fr','1997/11/29','images/Dieg_pro.png', '0')";
+$rqt44 = "INSERT INTO Ami(Id,Id_Utili, Nom,Prénom,Mail,Naissance,Photo,estAmi) VALUES (NULL, '$nb','Roth','Basile','basile.roth@edu.ece.fr','1997/02/27','images/Bas_pro.png', '0')";
 if($email!=NULL)
 {
  $bdd->query($rqt);
+ $bdd->query($rqt42);
+ $bdd->query($rqt43);
+ $bdd->query($rqt44);
 }
+
 }
 
 if(isset($_POST["submit"])){
@@ -30,22 +37,61 @@ if(isset($_POST["submit"])){
 	$email = isset($_POST['emailCo'])? $_POST['emailCo']:"";
 	$mdp = isset($_POST['mdpCo'])? $_POST['mdpCo']:"";
 
- $_SESSION["mail"] = $email;
+ 	$_SESSION["mail"] = $email;
 
-	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
-	$reponse = "SELECT prenom, nom, mail, mdp FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
+	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+	$reponse = "SELECT id, prenom, nom, mail, mdp, naissance, Photo, Statut, role FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
 	$jack = $bdd->query($reponse);
-
 	$donnees = $jack->fetch();
+	$e = $donnees['id'];
 
 	$_SESSION["nom"] = $donnees['nom'];
 	$_SESSION["prenom"] = $donnees['prenom'];
+	$_SESSION["naissance"] = $donnees['naissance'];
+	$_SESSION["Photo"] = $donnees['Photo'];
+	$_SESSION["id"] = $donnees['id'];
+	$_SESSION["statut"] = $donnees['Statut'];
+	$_SESSION["role"] = $donnees['role'];
+	$_SESSION["abc"] = $donnees['id'];
+
+  	$pro = "SELECT * FROM profession WHERE id='$e'";
+ 	$jack2 = $bdd->query($pro);
+ 	$donnees2 = $jack2->fetch();
+ 	$_SESSION["apropos"] = $donnees2['apropos'];
+ 	$_SESSION["nom_poste1"] = $donnees2['nom_poste1'];
+ 	$_SESSION["entreprise1"] = $donnees2['entreprise1'];
+	$_SESSION["date_debut1"] = $donnees2['date_debut1'];
+ 	$_SESSION["date_fin1"] = $donnees2['date_fin1'];
+ 	$_SESSION["desc1"] = $donnees2['desc1'];
+ 	$_SESSION["nom_poste2"] = $donnees2['nom_poste2'];
+ 	$_SESSION["entreprise2"] = $donnees2['entreprise2'];
+ 	$_SESSION["date_debut2"] = $donnees2['date_debut2'];
+ 	$_SESSION["date_fin2"] = $donnees2['date_fin2'];
+ 	$_SESSION["desc2"] = $donnees2['desc2'];
+ 	$_SESSION["diplome1"] = $donnees2['diplome1'];
+ 	$_SESSION["universite1"] = $donnees2['universite1'];
+ 	$_SESSION["date_val1"] = $donnees2['date_val1'];
+ 	$_SESSION["descri1"] = $donnees2['descri1'];
+ 	$_SESSION["diplome2"] = $donnees2['diplome2'];
+ 	$_SESSION["universite2"] = $donnees2['universite2'];
+ 	$_SESSION["date_val2"] = $donnees2['date_val2'];
+ 	$_SESSION["descri2"] = $donnees2['descri2'];
+ 	$_SESSION["diplome3"] = $donnees2['diplome3'];
+ 	$_SESSION["universite3"] = $donnees2['universite3'];
+ 	$_SESSION["date_val3"] = $donnees2['date_val3'];
+ 	$_SESSION["descri3"] = $donnees2['descri3'];
+
+
+
 	if($donnees['mail']==$email && $donnees['mdp']==$mdp && $email!=NULL)
 	{
 		header('location:Profil1.php');
-
 	}
 
+	if($donnees['mail']!=$email || $donnees['mdp']!=$mdp)
+	{
+		echo '<script>alert("Adresse mail ou mot de passe incorrect");</script>';
+	}
 
 }
 
@@ -93,7 +139,7 @@ if(isset($_POST["submit"])){
 						<div class="column">
 							<div>
 								<label>Date de naissance</label>
-								<input type="date" name="naissance"/>
+								<input type="Date" name="naissance"/>
 								<span class="error">Erreur</span>
 							</div>
 							<div>
@@ -108,14 +154,18 @@ if(isset($_POST["submit"])){
 								&nbsp;      
 								<input type="radio" name="sexe" value="femme" id="femme">   Femme<br>
 								<span class="error">Erreur</span>
+								 Droits&nbsp;:
+                <input type="radio" name="droits" value="1" id="homme">   Modérateur
+                &nbsp;
+                &nbsp;      
+                <input type="radio" name="droits" value="0" id="femme">   Utilisateur<br>
 							</div>
 						</div>
-						<div class="bottom">
-							
+						<div class="bottom">	
+							<input type="submit" value="S'inscrire" name="submit1"/>
 							<a href="index.html" rel="login" class="linkform">Vous avez déjà un compte ? Connectez-vous ici</a>
 							<div class="clear"></div>
 						</div>
-						<input type="submit" value="S'inscrire" name="submit1"/>
 					</form>
 
 					<form class="login active" method="post" action="index.php">
