@@ -7,14 +7,16 @@ $prenom = isset($_POST['prenom'])? $_POST['prenom']:"";
 $email = isset($_POST['mail'])? $_POST['mail']:"";
 $id = $_SESSION["id"];
 $naissance = isset($_POST['naissance'])? $_POST['naissance']:"";
+$role = isset($_POST['droits'])? $_POST['droits']:"";
 
 $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
-$rqt = "UPDATE utilisateurs SET nom='$nom', prenom='$prenom', mail='$email', naissance='$naissance' WHERE id='$id'";
+$rqt = "UPDATE utilisateurs SET nom='$nom', prenom='$prenom', mail='$email', naissance='$naissance', role='$role' WHERE id='$id'";
 $bdd->query($rqt);
 $_SESSION["nom"]=$_POST['nom'];
 $_SESSION["prenom"]=$_POST['prenom'];
 $_SESSION["mail"]=$_POST['mail'];
 $_SESSION["naissance"]=$_POST['naissance'];
+$_SESSION["role"]=$_POST['droits'];
 
 }
 
@@ -170,6 +172,7 @@ if(isset($_POST["Ok3"]))
         <li><a href="#">Notifications</a></li>
         <li><a href="#">Messagerie</a></li>
         <li><a href="./Emploi.php">Emploi</a></li>
+        <li><a href="./Administrateur.php"> <?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
@@ -220,6 +223,12 @@ if(isset($_POST["Ok3"]))
     <input type="Date" name="naissance" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
     Email&nbsp;:
     <input type="Email" name="mail" value="Votre texte" id="idText" size="20" maxlength="15" /><br />
+
+                Droits&nbsp;:
+                <input type="radio" name="droits" value="1" id="homme">   Modérateur
+                &nbsp;
+                &nbsp;      
+                <input type="radio" name="droits" value="0" id="femme">   Utilisateur<br>
 
     <!-- fin - elements de la boite de dialogue -->
  

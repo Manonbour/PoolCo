@@ -1,9 +1,23 @@
 <?php
  session_start();
+
+if(isset($_GET['noom']))
+{
+  
+  $t=$_SESSION["abc"];
+  //$noom=isset($_GET['nom'])? $_GET['nom']:"";
+  $noom = $_GET['noom'];
+
+    $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+    $rqt = "UPDATE ami SET estAmi=1 WHERE Id_Utili='$t' AND Nom='$noom' AND estAmi=0";
+    $rep = $bdd->query($rqt);
+
+}
+
  $t=$_SESSION["abc"];
- $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
- $reponse0 = "SELECT Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id AND utilisateurs.id=$t AND Ami.estAmi=0";
- $reponse1 = "SELECT Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail  FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id AND utilisateurs.id=$t AND Ami.estAmi=1";
+ $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+ $reponse0 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id AND utilisateurs.id=$t AND Ami.estAmi=0";
+ $reponse1 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi  FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id AND utilisateurs.id=$t AND Ami.estAmi=1";
  $jack0 = $bdd->query($reponse0);
  $jack1 = $bdd->query($reponse1);
 ?>
@@ -53,7 +67,7 @@
       font-weight: bold;
       padding: 8px 0 9px;
       text-align: center;
-      width: 30px;
+      width: 60px;
       height: 30px;
       cursor:pointer;
       margin:0px 0px 10px 10px;
@@ -115,6 +129,7 @@
         <li><a href="#">Notifications</a></li>
         <li><a href="#">Messagerie</a></li>
         <li><a href="./Emploi.php">Emploi</a></li>
+        <li><a href="./Administrateur.php">Administrateur</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
@@ -170,8 +185,10 @@
     <img class="photopro" src="<?php echo $image; ?>" alt="Avatar">
     <span style="width:60px"></span>
     <a href="./ProfilAmi.php?immg=<?php echo $image;?>&noom=<?php echo $_SESSION["nom_ami"]?>&pree=<?php echo $_SESSION["prénom_ami"]?>&daate=<?php echo $_SESSION["naissance_ami"]?>&maail=<?php echo $_SESSION["mail_ami"]?>" title=""><?php echo $_SESSION["prénom_ami"]; echo " "; echo $_SESSION["nom_ami"];?></a>
-    <button type="button" nom="ajouter" class="jj2">+</button> 
-
+  <!-- <form method="get" action="Reseau.php">-->
+    
+<a href="./Reseau.php?noom=<?php echo $_SESSION["nom_ami"]?>"><input type="submit" name="ajouter" value="+ Ajouter" class="jj2"></input></a>
+  </form>
     <?php
   }
   ?>

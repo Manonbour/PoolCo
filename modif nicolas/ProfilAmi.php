@@ -1,6 +1,6 @@
 <?php
  session_start();
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 ?>
 
 <!DOCTYPE HTML>
@@ -68,6 +68,7 @@
         <li><a href="#">Notifications</a></li>
         <li><a href="#">Messagerie</a></li>
         <li><a href="./Emploi.php">Emploi</a></li>
+        <li><a href="./Administrateur.php">Administrateur</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>

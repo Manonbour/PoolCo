@@ -10,15 +10,32 @@ $email = isset($_POST['email'])? $_POST['email']:"";
 $mdp = isset($_POST['mdp'])? $_POST['mdp']:"";
 $naissance = isset($_POST['naissance'])? $_POST['naissance']:"";
 $sexe = isset($_POST['sexe'])? $_POST['sexe']:"";
+$role = isset($_POST['droits'])? $_POST['droits']:"";
 
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 $rqt2 = "SELECT MAX(id) FROM utilisateurs";
+$encore = "SELECT * FROM utilisateurs";
+$encore2 = $bdd->query($encore);
+
 $jack = $bdd->query($rqt2);
 $donnees = $jack->fetch();
 $nb = $donnees[0]+1;
 $_SESSION["id"] = $nb;
-$rqt = "INSERT INTO utilisateurs(id,nom,prenom,mail,naissance,mdp,sexe) VALUES ('$nb','$nom','$prenom','$email','$naissance','$mdp','$sexe')";
+
+while($dns = $encore2->fetch())
+{
+$anom = $dns['nom'];
+$aprenom = $dns['prenom'];
+$aphoto = $dns['Photo'];
+$anaissance = $dns['naissance'];
+$amail = $dns['mail'];
+
+$rqt3 = "INSERT INTO ami (Id_Utili,Nom,Prénom,Photo,Naissance,Mail,estAmi) VALUES ('$nb','$anom','$aprenom','$aphoto','$anaissance','$amail', 0)";
+$bdd->query($rqt3);
+
+}
+$rqt = "INSERT INTO utilisateurs(id,nom,prenom,mail,naissance,mdp,sexe,role) VALUES ('$nb','$nom','$prenom','$email','$naissance','$mdp','$sexe','$role')";
 if($email!=NULL)
 {
  $bdd->query($rqt);
@@ -32,8 +49,8 @@ if(isset($_POST["submit"])){
 
  $_SESSION["mail"] = $email;
 
-	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
-	$reponse = "SELECT id, prenom, nom, mail, mdp, naissance, Photo, Statut FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
+	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+	$reponse = "SELECT id, prenom, nom, mail, mdp, naissance, Photo, Statut, role FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
 	$jack = $bdd->query($reponse);
 	$donnees = $jack->fetch();
 	$e = $donnees['id'];
@@ -44,6 +61,7 @@ if(isset($_POST["submit"])){
 	$_SESSION["Photo"] = $donnees['Photo'];
 	$_SESSION["id"] = $donnees['id'];
 	$_SESSION["statut"] = $donnees['Statut'];
+	$_SESSION["role"] = $donnees['role'];
 	$_SESSION["abc"] = $donnees['id'];
 
   	$pro = "SELECT * FROM profession WHERE id='$e'";
@@ -143,6 +161,11 @@ if(isset($_POST["submit"])){
 								&nbsp;      
 								<input type="radio" name="sexe" value="femme" id="femme">   Femme<br>
 								<span class="error">Erreur</span>
+								 Droits&nbsp;:
+                <input type="radio" name="droits" value="1" id="homme">   Modérateur
+                &nbsp;
+                &nbsp;      
+                <input type="radio" name="droits" value="0" id="femme">   Utilisateur<br>
 							</div>
 						</div>
 						<div class="bottom">

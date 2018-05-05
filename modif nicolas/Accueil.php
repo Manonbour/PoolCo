@@ -4,7 +4,17 @@ session_start();
 $date = date("Y-m-d");
 $heure = date("H:i:s");
 $id=$_SESSION["abc"];
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+
+if(isset($_GET['idpubli']))
+{
+$idpubli = $_GET['idpubli'];
+
+
+  $rqtt = "INSERT INTO `like` (id_publi, id_utili) VALUES ('$idpubli', '$id')";
+  $bdd->query($rqtt);
+  
+}
 
 if(isset($_POST["Env"]))
 {
@@ -14,8 +24,11 @@ if(isset($_POST["Env"]))
   $_SESSION["txt"]=$_POST['TEX'];
 }
 
-$requ = "SELECT * FROM utilisateurs INNER JOIN Publication WHERE utilisateurs.id=Publication.Id_Un";
+$requ = "SELECT * FROM utilisateurs INNER JOIN Publication WHERE utilisateurs.id=Publication.Id_Un ORDER BY Publication.Date DESC, Publication.Heure DESC";
 $jack=$bdd->query($requ);
+
+
+
 
 ?>
 
@@ -137,6 +150,7 @@ $jack=$bdd->query($requ);
         <li><a href="#">Notifications</a></li>
         <li><a href="#">Messagerie</a></li>
         <li><a href="./Emploi.php">Emploi</a></li>
+        <li><a href="./Administrateur.php">Administrateur</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
@@ -171,15 +185,27 @@ $jack=$bdd->query($requ);
       <hr>
       <?php while ($donnees=$jack->fetch())
       {
+
+        $test = $donnees['Id'];
+        $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+        $requ2 = "SELECT COUNT(DISTINCT id_utili) FROM `publication` INNER JOIN `like` WHERE '$test'=like.id_publi ";
+        $jackda=$bdd->query($requ2);
+        $donneesda=$jackda->fetch();
+        $_SESSION["Id"] = $donnees['Id'];
+        $aller=$donneesda[0];
         $imgg=$donnees['Photo'];
         ?> 
         <img src="<?php echo $imgg?>" alt="Avatar" style="width:60px">
         <span style="font-weight: bold"><?php echo $donnees['prenom']; echo " "; echo $donnees['nom'];?></span><span> dit : </span><br><br>
         <?php echo $donnees['Texte'];?>
         <br><br>
-        <button type="button" class="jj2"><i class="fa fa-thumbs-up"></i>J'aime</button> 
-        <button type="button" class="jj2"><i class="fa fa-comment"></i>Commenter</button>
-        <button type="button" class="jj2"><i class="fa fa-comment"></i>Partager</button> 
+        <!--<form action="Accueil.php" method="post">-->
+        </form>
+        <a href="./Accueil.php?idpubli=<?php echo $_SESSION["Id"]?>" > <input type="submit" name="ajouter" value="J'aime <?php echo $aller?>" class="jj2"><i class="fa fa-thumbs-up"></i></input></a>
+
+        <button type="submit" class="jj2"><i class="fa fa-comment"></i>Commenter</button>
+        <button type="submit" class="jj2"><i class="fa fa-comment"></i>Partager</button> 
+        <p>Posté le : <?php echo $donnees['Date']; echo " "; echo $donnees['Heure']; ?></p>
         <hr><br>
         <?php } ?>
         <br>
