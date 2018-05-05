@@ -12,7 +12,7 @@ $naissance = isset($_POST['naissance'])? $_POST['naissance']:"";
 $sexe = isset($_POST['sexe'])? $_POST['sexe']:"";
 
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 $rqt2 = "SELECT MAX(id) FROM utilisateurs";
 $jack = $bdd->query($rqt2);
 $donnees = $jack->fetch();
@@ -32,7 +32,7 @@ if(isset($_POST["submit"])){
 
  $_SESSION["mail"] = $email;
 
-	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 	$reponse = "SELECT prenom, nom, mail, mdp FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
 	$jack = $bdd->query($reponse);
 

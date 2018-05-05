@@ -4,7 +4,7 @@ session_start();
 $date = date("Y-m-d");
 $heure = date("H:i:s");
 $id=$_SESSION["abc"];
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 
 if(isset($_GET['idpubli']))
 {
@@ -34,7 +34,7 @@ $DateEvent= isset($_POST['DateEvent'])? $_POST['DateEvent']:"";
 $HeureEvent= isset($_POST['HeureEvent'])? $_POST['HeureEvent']:"";
 $DescEvent= isset($_POST['DescEvent'])? $_POST['DescEvent']:"";
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 
 $rqt = "INSERT INTO `Event` (`id_event`, `Titre`, `Lieu`, `Date`, `Heure`,`Description`,`id_posteur`) VALUES (NULL, '$TitreEvent', '$LieuEvent', '$DateEvent', '$HeureEvent','$DescEvent', '$id');";
 

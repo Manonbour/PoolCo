@@ -13,7 +13,7 @@ $email1 = isset($_POST['mail'])? $_POST['mail']:"";
 $id1 = $_SESSION["id1"];
 
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 $rqt2 = "SELECT MAX(id) FROM utilisateurs";
 $rqt4 = "SELECT MAX(id) FROM Ami";
 $jack = $bdd->query($rqt2);
@@ -47,7 +47,7 @@ $_SESSION["mail"]=$_POST['mail'];
 
   
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 
 //$id5 = $donnees5['id'];
 $blaze = $_GET['noom'];
@@ -75,14 +75,14 @@ $_SESSION["id6"] = $donnees6['id'];*/
 { 
   $t=$_SESSION["abc"];
   $noom = $_GET['noom'];
-    $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+    $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
     $rqt = "UPDATE Ami SET estAmi=1 WHERE Id_Utili='$t' AND Nom='$noom' AND estAmi=0";
     $rep = $bdd->query($rqt);
 }
 
 
  $t=$_SESSION["abc"];
- $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+ $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
  $reponse0 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id AND Ami.estAmi=0";
  $reponse1 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi  FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id  AND Ami.estAmi=1";
  $reponse3 = "SELECT * FROM `utilisateurs`";

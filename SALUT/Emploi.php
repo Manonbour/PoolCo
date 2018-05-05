@@ -7,14 +7,14 @@ $TitreOffre = isset($_POST['TitreOffre'])? $_POST['TitreOffre']:"";
 $AuteurOffre = isset($_POST['AuteurOffre'])? $_POST['AuteurOffre']:"";
 $DescOffre = isset($_POST['DescOffre'])? $_POST['DescOffre']:"";
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 
 $rqt = "INSERT INTO `offre` (`Num_offre`, `Titre`, `Description`, `Nom_Auteur`) VALUES (NULL, '$TitreOffre', '$DescOffre', '$AuteurOffre');";
 
 $bdd->query($rqt);
 }
 
- $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+ $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
  $requ = "SELECT * FROM offre";
  $jack0 = $bdd->query($requ);
 ?>

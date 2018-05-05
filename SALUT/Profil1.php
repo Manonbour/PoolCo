@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_POST["AjPho"]))
 {
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
   echo $filename = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_FILENAME);
   echo $type = pathinfo($_FILES['fileToUpload']['type'], PATHINFO_FILENAME);
   if($type=='jpeg'){$type='jpg';}
@@ -14,7 +14,7 @@ if(isset($_POST["AjPho"]))
 }$ch=0;
 
 $id = $_SESSION["id"];
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 $requ = "SELECT URL FROM Album WHERE id_utilisateur=$id";
 $bidule=$bdd->query($requ);
 
@@ -32,7 +32,7 @@ echo $type = pathinfo($_FILES['fileToUpload']['type'], PATHINFO_FILENAME);
 if($type=='jpeg'){$type='jpg';}
 echo $chemin = "images/".$filename.".".$type;
 
-$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 $rqt = "UPDATE utilisateurs SET nom='$nom', prenom='$prenom', mail='$email', naissance='$naissance', Photo='$chemin', Statut='$Statut', WHERE id='$id'";
 $bdd->query($rqt);
 
@@ -48,7 +48,7 @@ if(isset($_POST["Ok2"]))
 {
   $apropos = isset($_POST['apropos'])? $_POST['apropos']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
   $rqt = "UPDATE profession SET apropos='$apropos' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["apropos"]=$_POST['apropos'];
@@ -62,7 +62,7 @@ if(isset($_POST["Ok4"]))
   $date_val3 = isset($_POST['date_val3'])? $_POST['date_val3']:"";
   $descri3 = isset($_POST['descri3'])? $_POST['descri3']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
   $rqt = "UPDATE profession SET diplome3='$diplome3', universite3='$universite3', date_val3='$date_val3', descri3='$descri3' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["diplome3"] = $_POST['diplome3'];
@@ -78,7 +78,7 @@ if(isset($_POST["Ok5"]))
   $date_val3 = isset($_POST['date_val2'])? $_POST['date_val2']:"";
   $descri3 = isset($_POST['descri2'])? $_POST['descri2']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
   $rqt = "UPDATE profession SET diplome2='$diplome3', universite2='$universite3', date_val2='$date_val3', descri2='$descri3' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["diplome2"] = $_POST['diplome2'];
@@ -95,7 +95,7 @@ if(isset($_POST["Ok6"]))
   $date_val3 = isset($_POST['date_val1'])? $_POST['date_val1']:"";
   $descri3 = isset($_POST['descri1'])? $_POST['descri1']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
   $rqt = "UPDATE profession SET diplome1='$diplome3', universite1='$universite3', date_val1='$date_val3', descri1='$descri3' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["diplome1"] = $_POST['diplome1'];
@@ -112,7 +112,7 @@ if(isset($_POST["Ok3"]))
   $date_fin2 = isset($_POST['date_fin2'])? $_POST['date_fin2']:"";
   $desc2 = isset($_POST['desc2'])? $_POST['desc2']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
   $rqt = "UPDATE profession SET nom_poste2='$nom_poste2', entreprise2='$entreprise2', date_debut2='$date_debut2', date_fin2='$date_fin2', desc2='$desc2' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["nom_poste2"] = $_POST['nom_poste2'];
@@ -131,7 +131,7 @@ if(isset($_POST["Ok3"]))
   $date_fin2 = isset($_POST['date_fin1'])? $_POST['date_fin1']:"";
   $desc2 = isset($_POST['desc1'])? $_POST['desc1']:"";
   $id = $_SESSION["id"];
-  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
   $rqt = "UPDATE profession SET nom_poste1='$nom_poste2', entreprise1='$entreprise2', date_debut1='$date_debut2', date_fin1='$date_fin2', desc1='$desc2' WHERE id='$id'";
   $bdd->query($rqt);
   $_SESSION["nom_poste1"] = $_POST['nom_poste1'];

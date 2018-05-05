@@ -39,7 +39,7 @@ if(isset($_POST["submit"])){
 
  	$_SESSION["mail"] = $email;
 
-	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', 'root');
+	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 	$reponse = "SELECT id, prenom, nom, mail, mdp, naissance, Photo, Statut FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
 	$jack = $bdd->query($reponse);
 	$donnees = $jack->fetch();
