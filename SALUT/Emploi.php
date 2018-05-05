@@ -127,6 +127,7 @@ $bdd->query($rqt);
         <li><a href="#">Notifications</a></li>
         <li><a href="#">Messagerie</a></li>
         <li class="active"><a href="./Emploi.php">Emploi</a></li>
+        <li><a href="./Administrateur.php"> <?php if($_SESSION['role']==1){echo "Administrateur";}?></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>

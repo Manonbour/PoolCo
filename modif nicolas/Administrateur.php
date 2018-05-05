@@ -15,41 +15,69 @@ $id1 = $_SESSION["id1"];
 
 $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
 $rqt2 = "SELECT MAX(id) FROM utilisateurs";
+$rqt4 = "SELECT MAX(id) FROM Ami";
 $jack = $bdd->query($rqt2);
+$jack4 = $bdd->query($rqt4);
 $donnees = $jack->fetch();
+$donnees1 = $jack4->fetch();
 $nb = $donnees[0]+1;
-$_SESSION["id"] = $nb;
-$nb1 = $donnees[0]+1;
-$_SESSION["id1"] = $nb1;
+//$_SESSION["id"] = $nb;
+$nb1 = $donnees1[0]+1;
+//$_SESSION["id1"] = $nb1;
 $rqt = "INSERT INTO utilisateurs(id, nom, prenom, mail,Photo) VALUES ('$nb', '$nom','$prenom','$email','images/pardef.png')";
 $bdd->query($rqt);
-$rqt1 = "INSERT INTO ami(id, Nom, Prénom, Mail,Photo) VALUES ('$nb1', '$nom1','$prenom1','$email1','images/pardef.png')";
+$rqt1 = "INSERT INTO Ami(id, Nom, Prénom, Mail,Photo) VALUES ('$nb1', '$nom1','$prenom1','$email1','images/pardef.png')";
 $bdd->query($rqt1);
-$_SESSION["nom"]=$_POST['nom'];
-$_SESSION["prenom"]=$_POST['prenom'];
-$_SESSION["mail"]=$_POST['mail'];
+$_SESSION["nom3"]=$_POST['nom'];
+$_SESSION["prenom3"]=$_POST['prenom'];
+$_SESSION["mail3"]=$_POST['mail'];
 
 
 
-$_SESSION["nom"]=$_POST['nom'];
-$_SESSION["prenom"]=$_POST['prenom'];
-$_SESSION["mail"]=$_POST['mail'];
+$_SESSION["nom4"]=$_POST['nom'];
+$_SESSION["prenom4"]=$_POST['prenom'];
+$_SESSION["mail4"]=$_POST['mail'];
 
 
 
 }
 
+
+ if(isset($_GET['noom'])){
+
+  
+
+$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
+
+//$id5 = $donnees5['id'];
+$blaze = $_GET['noom'];
+
+//$_SESSION["id5"] = $donnees5['id'];
+$rqt5 = "DELETE FROM `utilisateurs` WHERE nom= '$blaze'";
+$bdd->query($rqt5);
+
+//$donnees5 = $jack5->fetch();
+
+
+$rqt6 = "DELETE FROM `Ami` WHERE nom= '$blaze'";
+$bdd->query($rqt6);
+/*$jack6 = $bdd->query($rqt6);
+
+$donnees6 = $jack6->fetch();
+$id6 = $donnees6['id'];
+
+$_SESSION["id6"] = $donnees6['id'];*/
+
+ }
+
+
  if(isset($_GET['noom']))
 { 
- /* $t=$_SESSION["abc"];
+  $t=$_SESSION["abc"];
   $noom = $_GET['noom'];
     $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
-    $rqt = "UPDATE ami SET estAmi=1 WHERE Id_Utili='$t' AND Nom='$noom' AND estAmi=0";
-    $rep = $bdd->query($rqt);*/
-    if($_SESSION['role'] == 0)
-    {
-      alert("pas le droit");
-    }
+    $rqt = "UPDATE Ami SET estAmi=1 WHERE Id_Utili='$t' AND Nom='$noom' AND estAmi=0";
+    $rep = $bdd->query($rqt);
 }
 
 
@@ -57,7 +85,7 @@ $_SESSION["mail"]=$_POST['mail'];
  $bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
  $reponse0 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id AND Ami.estAmi=0";
  $reponse1 = "SELECT Ami.Id, Ami.Nom,Ami.Prénom,Ami.Photo, Ami.Naissance, Ami.Mail, Ami.estAmi  FROM Ami INNER JOIN utilisateurs WHERE Ami.Id_Utili=utilisateurs.id  AND Ami.estAmi=1";
- $reponse3 = "SELECT * FROM utilisateurs";
+ $reponse3 = "SELECT * FROM `utilisateurs`";
  $jack0 = $bdd->query($reponse0);
  $jack1 = $bdd->query($reponse1);
  $jack3 = $bdd->query($reponse3);
@@ -66,16 +94,13 @@ $_SESSION["mail"]=$_POST['mail'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Mon réseau</title>
+  <title>Gérer les utilisateurs</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
-
 ">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
-
 "></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
-
 "></script>
 
 <script>
@@ -235,7 +260,6 @@ function clicAnnuleradmin()
 
   </style>
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura
-
 " rel="stylesheet">
 </head>
 <body>
@@ -291,11 +315,9 @@ function clicAnnuleradmin()
     <span style="width:60px"></span>
     <a href="./ProfilAmi.php?immg=<?php echo $image;?>&noom=<?php echo $_SESSION["nom_utilisateur"]?>&pree=<?php echo $_SESSION["prénom_utilisateur"]?>&daate=<?php echo $_SESSION["naissance_utilisateur"]?>&maail=<?php echo $_SESSION["mail_utilisateur"]?>" title=""><?php echo $_SESSION["prénom_utilisateur"]; echo " "; echo $_SESSION["nom_utilisateur"];?></a>
   <!-- <form method="get" action="Reseau.php">-->
-
     
-<a
-     href="./Administrateur.php?noom=<?php echo $_SESSION["nom_utilisateur"]?>"> <input type="submit" name="supprimer" value="Supprimer" class="jj2"> </input></a>
-  </form>  
+<a href="./Administrateur.php?noom=<?php echo $_SESSION["nom_utilisateur"]?>"> <input type="submit" name="supprimer" value="Supprimer" class="jj2"></input></a>
+  </form>
     <?php
   }
   ?>

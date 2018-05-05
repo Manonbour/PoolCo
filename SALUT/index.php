@@ -40,7 +40,7 @@ if(isset($_POST["submit"])){
  	$_SESSION["mail"] = $email;
 
 	$bdd = new PDO('mysql:host=localhost;dbname=poolco;charset=utf8', 'root', '');
-	$reponse = "SELECT id, prenom, nom, mail, mdp, naissance, Photo, Statut FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
+	$reponse = "SELECT id, prenom, nom, mail, mdp, naissance, Photo, Statut, role FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
 	$jack = $bdd->query($reponse);
 	$donnees = $jack->fetch();
 	$e = $donnees['id'];
@@ -153,6 +153,12 @@ if(isset($_POST["submit"])){
 								&nbsp;      
 								<input type="radio" name="sexe" value="femme" id="femme">   Femme<br>
 								<span class="error">Erreur</span>
+								 Droits&nbsp;:
+                <input type="radio" name="droits" value="1" id="homme">   Modérateur
+                &nbsp;
+                &nbsp;      
+                <input type="radio" name="droits" value="0" id="femme">   Utilisateur<br>
+							</div>
 							</div>
 						</div>
 						<div class="bottom">	

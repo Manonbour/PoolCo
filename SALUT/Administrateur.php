@@ -28,15 +28,15 @@ $rqt = "INSERT INTO utilisateurs(id, nom, prenom, mail,Photo) VALUES ('$nb', '$n
 $bdd->query($rqt);
 $rqt1 = "INSERT INTO Ami(id, Nom, Prénom, Mail,Photo) VALUES ('$nb1', '$nom1','$prenom1','$email1','images/pardef.png')";
 $bdd->query($rqt1);
-$_SESSION["nom"]=$_POST['nom'];
-$_SESSION["prenom"]=$_POST['prenom'];
-$_SESSION["mail"]=$_POST['mail'];
+$_SESSION["nom3"]=$_POST['nom'];
+$_SESSION["prenom3"]=$_POST['prenom'];
+$_SESSION["mail3"]=$_POST['mail'];
 
 
 
-$_SESSION["nom"]=$_POST['nom'];
-$_SESSION["prenom"]=$_POST['prenom'];
-$_SESSION["mail"]=$_POST['mail'];
+$_SESSION["nom4"]=$_POST['nom'];
+$_SESSION["prenom4"]=$_POST['prenom'];
+$_SESSION["mail4"]=$_POST['mail'];
 
 
 
